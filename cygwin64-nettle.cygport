@@ -1,0 +1,20 @@
+CROSS_HOST="x86_64-pc-cygwin"
+inherit cross
+
+NAME="cygwin64-nettle"
+VERSION=2.5
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="libnettle/libhogweed for Cygwin 64bit toolchain"
+DESCRIPTION=
+HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
+SRC_URI="http://www.lysator.liu.se/~nisse/archive/nettle-${VERSION}.tar.gz"
+SRC_DIR="nettle-${VERSION}"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	rm -f ${D}${CROSS_BINDIR}/*.exe
+	rm -fr ${D}${CROSS_DATADIR}/info/
+}
